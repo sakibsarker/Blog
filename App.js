@@ -36,7 +36,22 @@ const Tab=createMaterialTopTabNavigator()
 
 export default function App(){
 const[loggedIn, setLoggedIn]=useState(false)
-const[loading, setLoading]=useState(false)
+const[loading, setLoading]=useState(true)
+
+async function onAuthStateChanged(user){
+  if(user){
+    setLoggedIn(true)
+  }
+  else{
+    setLoggedIn(false)
+  }
+  if(loading) setLoading(false)
+}
+
+useEffect(()=>{
+  const subscribe=auth().onAuthStateChanged(onAuthStateChanged)
+  return subscribe
+},[])
 
 if(loading){
   return(
@@ -61,7 +76,8 @@ if(!loggedIn){
 
   return (
    <NavigationContainer>
-    <Stack.Navigator initialRouteName='Home'>
+    <Stack.Navigator initialRouteName='Home'
+    screenOptions={{headerShown:false}}>
       <Stack.Screen name='Home' component={Home}/>
       <Stack.Screen name='CreateBlog' component={CreateBlog}/>
       <Stack.Screen name='Blog' component={Blog}/>

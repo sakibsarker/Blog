@@ -5,27 +5,6 @@ import firestore from '@react-native-firebase/firestore'
 import storage from'@react-native-firebase/storage'
 import { launchCamera,launchImageLibrary } from 'react-native-image-picker'
 import auth from '@react-native-firebase/auth'
-import {initializeApp,firebase} from '@react-native-firebase/app';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBdYEIthAGzyOAhJ4UiJ3vJmqFIod1ug6Y",
-  authDomain: "blog-app-8a0aa.firebaseapp.com",
-  databaseURL: "https://blog-app-8a0aa-default-rtdb.firebaseio.com/",
-  projectId: "blog-app-8a0aa",
-  storageBucket: "blog-app-8a0aa.appspot.com",
-  messagingSenderId:"461228782196",
-  appId: "1:461228782196:android:a76a8496773967daefd721",
-  //measurementId:"G-341F5YW4FQ",
-};
-if(!firebase.apps.length){
-  firebase.initializeApp(firebaseConfig)
-}
-//firebase.initializeApp(firebaseConfig)
-/*if (!firebase.apps.length) {
-  firebase.initializeApp({});
-}else {
-  firebase.app(); 
-}*/
 
 export default function Register() {
   const[email, setEmail]=useState()
@@ -68,7 +47,7 @@ export default function Register() {
          displayPicture: downloadURL
       })
       .then(() => console.log('Done'))
-   } catch(error) {
+   } catch(error){
       console.log(error)
    }
   }

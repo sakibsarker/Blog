@@ -9,6 +9,28 @@ import Blog from './Screen/Main/Blog'
 import CreateBlog from './Screen/Main/CreateBlog'
 import Login from './Screen/auth/Login'
 import Register from './Screen/auth/Register'
+import {initializeApp,firebase} from '@react-native-firebase/app';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBdYEIthAGzyOAhJ4UiJ3vJmqFIod1ug6Y",
+  authDomain: "blog-app-8a0aa.firebaseapp.com",
+  databaseURL: "https://blog-app-8a0aa-default-rtdb.firebaseio.com/",
+  projectId: "blog-app-8a0aa",
+  storageBucket: "gs://blog-app-8a0aa.appspot.com",
+  messagingSenderId:"461228782196",
+  appId: "1:461228782196:android:a76a8496773967daefd721",
+  measurementId:"G-341F5YW4FQ",
+};
+if(!firebase.apps.length){
+  firebase.initializeApp(firebaseConfig)
+}
+
+/*if (!firebase.apps.length) {
+  firebase.initializeApp({});
+}else {
+  firebase.app(); 
+}*/
+
 const Stack= createStackNavigator()
 const Tab=createMaterialTopTabNavigator()
 
